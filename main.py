@@ -41,7 +41,7 @@ def divide(num1, num2):
     return num1 / num2
 
 def get_number_input(prompt_message):
-    # Continua pedindo um número ao usuário até que uma entrada válida seja fornecida.
+    # keeps asking a number to the user until a valid input is given
     while True:
         try:
             number = int(input(prompt_message))
