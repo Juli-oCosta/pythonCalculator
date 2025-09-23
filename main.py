@@ -52,14 +52,20 @@ def get_number_input(prompt_message):
 first_number = get_number_input("Type in the first number: ")
 second_number = get_number_input("Type in the second number: ")
 
-operator = input("Select the operator: '+', '-', '*' or '/': ")
+while True:
+  operator = input("Select the operator: '+', '-', '*' or '/': ")
+  if operator in ['+', '-', '*', '/']:
+    break
+  else:
+    print("Invalid operator. Please, choose one of the following: +, -, *, /")
 
 if operator == "+":
-  add(num1 = first_number, num2 = second_number)
+  result = add(num1 = first_number, num2 = second_number)
 elif operator == "-":
-  subtract(num1 = first_number, num2 = second_number)
+  result = subtract(num1 = first_number, num2 = second_number)
 elif operator == "*":
-  multiply(num1 = first_number, num2 = second_number)
+  result = multiply(num1 = first_number, num2 = second_number)
 else:
-  divide(num1 = first_number, num2 = second_number)
+  result = divide(num1 = first_number, num2 = second_number)
 
+print(f"{first_number} {operator} {second_number} = {result}")
