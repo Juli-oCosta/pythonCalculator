@@ -18,12 +18,12 @@ logo = """
 
 print(logo)
 
-operations = {
-  "+": add,
-  "-": subtract,
-  "*": multiply,
-  "/": divide
-}
+# operations = {
+#   "+": add,
+#   "-": subtract,
+#   "*": multiply,
+#   "/": divide
+# }
 
 def add(num1, num2):
   return num1 + num2
@@ -40,8 +40,18 @@ def divide(num1, num2):
   else:
     return num1 / num2
 
-first_number = int(input("Type in the first number: "))
-second_number = int(input("Type in the second number: "))
+def get_number_input(prompt_message):
+    # Continua pedindo um número ao usuário até que uma entrada válida seja fornecida.
+    while True:
+        try:
+            number = int(input(prompt_message))
+            return number
+        except ValueError:
+            print("Oops! That's not a valid number. Please enter only digits.")
+
+first_number = get_number_input("Type in the first number: ")
+second_number = get_number_input("Type in the second number: ")
+
 operator = input("Select the operator: '+', '-', '*' or '/': ")
 
 if operator == "+":
