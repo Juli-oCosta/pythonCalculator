@@ -1,7 +1,7 @@
 logo = """
  _____________________
 |  _________________  |
-| |       2 + 2 = 4 | |  .----------------.  .----------------.  .----------------.  .----------------. 
+| |       2 + 2 = 4 | |  .----------------.  .----------------.  .----------------.  .----------------.
 | |_________________| | | .--------------. || .--------------. || .--------------. || .--------------. |
 |  ___ ___ ___   ___  | | |     ______   | || |      __      | || |   _____      | || |     ______   | |
 | | 7 | 8 | 9 | | + | | | |   .' ___  |  | || |     /  \     | || |  |_   _|     | || |   .' ___  |  | |
@@ -11,19 +11,12 @@ logo = """
 | | 1 | 2 | 3 | | x | | | |   '._____.'  | || ||____|  |____|| || |  |________|  | || |   '._____.'  | |
 | |___|___|___| |___| | | |              | || |              | || |              | || |              | |
 | | . | 0 | = | | / | | | '--------------' || '--------------' || '--------------' || '--------------' |
-| |___|___|___| |___| |  '----------------'  '----------------'  '----------------'  '----------------' 
+| |___|___|___| |___| |  '----------------'  '----------------'  '----------------'  '----------------'
 |_____________________|
 
 """
 
 print(logo)
-
-# operations = {
-#   "+": add,
-#   "-": subtract,
-#   "*": multiply,
-#   "/": divide
-# }
 
 def add(num1, num2):
   return num1 + num2
@@ -39,6 +32,13 @@ def divide(num1, num2):
     return "Cannot divide by zero."
   else:
     return num1 / num2
+
+operations = {
+  "+": add,
+  "-": subtract,
+  "*": multiply,
+  "/": divide
+}
 
 def get_number_input(prompt_message):
     # keeps asking a number to the user until a valid input is given
@@ -57,15 +57,9 @@ while True:
   if operator in ['+', '-', '*', '/']:
     break
   else:
-    print("Invalid operator. Please, choose one of the following: +, -, *, /")
+    print("Invalid operator. Please, choose one of the following: '+', '-', '*' or '/'")
 
-if operator == "+":
-  result = add(num1 = first_number, num2 = second_number)
-elif operator == "-":
-  result = subtract(num1 = first_number, num2 = second_number)
-elif operator == "*":
-  result = multiply(num1 = first_number, num2 = second_number)
-else:
-  result = divide(num1 = first_number, num2 = second_number)
+calculation_function = operations[operator]
+result = calculation_function(first_number, second_number)
 
 print(f"{first_number} {operator} {second_number} = {result}")
