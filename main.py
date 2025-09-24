@@ -50,16 +50,41 @@ def get_number_input(prompt_message):
             print("Oops! That's not a valid number. Please enter only digits.")
 
 first_number = get_number_input("Type in the first number: ")
-second_number = get_number_input("Type in the second number: ")
 
-while True:
-  operator = input("Select the operator: '+', '-', '*' or '/': ")
-  if operator in ['+', '-', '*', '/']:
-    break
-  else:
-    print("Invalid operator. Please, choose one of the following: '+', '-', '*' or '/'")
+over = False
+while not over:
+  while True:
+    operator = input("Select the operator: '+', '-', '*' or '/': ")
+    if operator in ['+', '-', '*', '/']:
+      break
+    else:
+      print("Invalid operator. Please, choose one of the following: '+', '-', '*' or '/'")
 
-calculation_function = operations[operator]
-result = calculation_function(first_number, second_number)
+  second_number = get_number_input("Type in the second number: ")
 
-print(f"{first_number} {operator} {second_number} = {result}")
+  calculation_function = operations[operator]
+  result = calculation_function(first_number, second_number)
+
+  print(f"{first_number} {operator} {second_number} = {result}")
+
+  if isinstance(result, str):
+    print("An error ocurred, cannot divide by zero.")
+    first_number = get_number_input("What's the first number?: ")
+    continue
+
+  while True:
+    next_step = input(f"Type 'c' to continue calculating with {result}, 'n' to start a new calculation, or 's' to stop: ").lower()
+
+    if next_step == 'c':
+      first_number = result
+      break
+    elif next_step == 'n':
+      first_number = get_number_input("What's the first number?: ")
+      break
+    elif next_step == 's':
+      over = True
+      break
+    else:
+       print("Invalid option. Please, choose 'c', 'n', or 's'.")
+
+print("Calculator finished. Goodbye!")
