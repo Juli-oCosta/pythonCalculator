@@ -1,3 +1,5 @@
+from IPython.display import clear_output
+
 logo = """
  _____________________
 |  _________________  |
@@ -27,6 +29,9 @@ def subtract(num1, num2):
 def multiply(num1, num2):
   return num1 * num2
 
+def exponent(num1, num2):
+  return num1 ** num2
+
 def divide(num1, num2):
   if num2 == 0:
     return "Cannot divide by zero."
@@ -37,7 +42,8 @@ operations = {
   "+": add,
   "-": subtract,
   "*": multiply,
-  "/": divide
+  "/": divide,
+  "**": exponent
 }
 
 def get_number_input(prompt_message):
@@ -54,11 +60,11 @@ first_number = get_number_input("Type in the first number: ")
 over = False
 while not over:
   while True:
-    operator = input("Select the operator: '+', '-', '*' or '/': ")
-    if operator in ['+', '-', '*', '/']:
+    operator = input("Select the operator: '+', '-', '*', '**' or '/': ")
+    if operator in ['+', '-', '*', '/', '**']:
       break
     else:
-      print("Invalid operator. Please, choose one of the following: '+', '-', '*' or '/'")
+      print("Invalid operator. Please, choose one of the following: '+', '-', '*', '**' or '/'")
 
   second_number = get_number_input("Type in the second number: ")
 
@@ -77,14 +83,19 @@ while not over:
 
     if next_step == 'c':
       first_number = result
+      clear_output()
       break
     elif next_step == 'n':
       first_number = get_number_input("What's the first number?: ")
+      clear_output()
       break
     elif next_step == 's':
       over = True
+      clear_output()
       break
     else:
        print("Invalid option. Please, choose 'c', 'n', or 's'.")
 
 print("Calculator finished. Goodbye!")
+
+    
